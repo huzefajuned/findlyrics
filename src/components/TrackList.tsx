@@ -51,7 +51,7 @@ type TrackListProps = {
 const TrackList = (props: TrackListProps) => {
   const navigate = useNavigate();
   let track_Data = props.tracks;
-  console.log("track_Data", track_Data);
+  // console.log("track_Data", track_Data);
 
   const navToViewPage = (selectProd: any) => {
     navigate(`/lyrics/track/${selectProd.track.track_id}`, {

@@ -56,9 +56,9 @@ const ViewLyrics = (props: LyricsListProps) => {
   return (
     <div>
       {lyrics.length === 0 ? (
-        <>
+        <div style={{ width:'70vw' , margin:'auto'}}>
           <img src={loading} alt="loading_img" />{" "}
-        </>
+        </ div>
       ) : (
         <>
           <div className={styles.container}>

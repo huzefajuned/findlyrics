@@ -10,8 +10,28 @@ const base_Url = "https://api.musixmatch.com/ws/1.1";
 const API_KEY = "cd6617a8f2c2e638dda29bd28be62cbe";
 
 function App() {
-  const [tracks, setTracks] = useState([]);
+  //storing search input.
+  const [title, setTitle] = useState("");
+  // console.log(title);
+  // storing API response.
+  const [searched, setSearched] = useState("");
+  console.log("from search api", searched);
+  //API call after clicking search icon
+  const onSearch = () => {
+    axios
+      .post(`${cors_Url}`, {
+        redirect_url: `${base_Url}/track.search?q_track=${title}&page_size=10&page=1&s_track_rating=desc&apikey=${API_KEY}
+      `,
+      })
+      .then((res) => {
+        console.log(res);
+        setSearched(res.data.message.body.track_list);
+      })
+      .catch((err) => console.log(err));
+  };
 
+  const [tracks, setTracks] = useState([]);
+  console.log("from track api", tracks)
   useEffect(() => {
     getlyrics();
   }, []);
@@ -29,11 +49,14 @@ function App() {
   return (
     <>
       <Router>
-        <Nav />
+        <Nav title={title} setTitle={setTitle} onSearch={onSearch} />
 
         <Routes>
           <Route path="*" element={<TrackList tracks={tracks} />} />
-          <Route path="/lyrics/track/:id" element={<ViewLyrics Lyrics={[]} />} />
+          <Route
+            path="/lyrics/track/:id"
+            element={<ViewLyrics Lyrics={[]} />}
+          />
         </Routes>
       </Router>
     </>
