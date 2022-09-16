@@ -14,8 +14,8 @@ function App() {
   const [title, setTitle] = useState("");
   // console.log(title);
   // storing API response.
-  const [searched, setSearched] = useState("");
-  console.log("from search api", searched);
+  // const [searched, setSearched] = useState("");
+  // console.log("from search api", searched);
   //API call after clicking search icon
   const onSearch = () => {
     axios
@@ -25,7 +25,7 @@ function App() {
       })
       .then((res) => {
         console.log(res);
-        setSearched(res.data.message.body.track_list);
+        setTracks(res.data.message.body.track_list);
       })
       .catch((err) => console.log(err));
   };

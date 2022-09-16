@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./ViewLyrics.module.css";
 const loading =
@@ -42,7 +42,8 @@ const ViewLyrics = (props: LyricsListProps) => {
   useEffect(() => {
     getlyrics();
   }, []);
-  const getlyrics = () => {
+  
+  function getlyrics () {
     axios
       .post(`${cors_Url}`, {
         redirect_url: `${base_Url}/track.lyrics.get?track_id=${location.state.track.track_id}&apikey=${API_KEY}`,

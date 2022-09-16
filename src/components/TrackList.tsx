@@ -1,19 +1,7 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import SingleTrack from "./SingleTrack";
 import styles from "./TrackList.module.css";
 import { useNavigate } from "react-router-dom";
 const loading =
   "https://www.technig.com/wp-content/uploads/2017/03/how-to-create-css-preloader.gif";
-
-// type tracksTypes = {
-//     track: [];
-// };
-// type track_Types = {
-//     album_name: string;
-//     artist_name: string;
-//     track_name: string;
-// };
 
 type TrackDetail = {
   album_id: Number;
@@ -42,10 +30,10 @@ type Track = {
   track: TrackDetail;
 };
 
-type TrackList = Track[];
+type TrackList_ = Track[];
 
 type TrackListProps = {
-  tracks: TrackList;
+  tracks: TrackList_;
 };
 
 const TrackList = (props: TrackListProps) => {
